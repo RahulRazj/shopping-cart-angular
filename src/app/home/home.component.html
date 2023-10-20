@@ -1,0 +1,110 @@
+<br />
+<br />
+<br />
+<div class="container">
+  <p class="display-6 pt-4">Shopping Cart</p>
+  <div class="row">
+    <div class="col-md-9">
+      <div *ngFor="let product of products" class="card my-3">
+        <div class="item-list d-flex">
+          <div class="product-image">
+            <img
+              style="width: 14rem"
+              class="card-img-top"
+              src="{{ product.productImageUrl }}"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="item-desc p-4">
+            <h4>{{ product.name }}</h4>
+            <p class="lead">{{ product.description }}</p>
+            <h6>Price: {{ product.price | currency : "INR" }}</h6>
+            <p>Qty: {{ product.quantityLeft }}</p>
+          </div>
+          <div class="p-2 item-order d-flex flex-column justify-content-end">
+            <div class="d-flex px-4">
+              <div class="manage-qty d-flex" *ngIf="product.totalQuantity > product.quantityLeft">
+                <button (click)="manageQuantity(product.id, -1)" class="brand-btn px-2 mx-2">-</button>
+                <h6>{{ product.totalQuantity - product.quantityLeft }}</h6>
+                <button [disabled]="product.quantityLeft === 0" (click)="manageQuantity(product.id)" class="brand-btn px-2 mx-2">+</button>
+              </div>
+              <Button
+                (click)="handleAddToCart(product.id)"
+                class="brand-btn"
+                style="width: 160px"
+                >{{
+                  product.totalQuantity > product.quantityLeft
+                    ? "Remove From Cart"
+                    : "Add To Cart"
+                }}</Button
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 cart-summary">
+      <p class="lead display-6 text-center">Your Cart</p>
+      <hr />
+      <div *ngIf="cartItems.length == 0">
+        <p class="text-center lead">Your Cart is empty</p>
+      </div>
+      <div *ngIf="cartItems.length > 0">
+        <div class="cart-items">
+          <div class="item-heading d-flex justify-content-between">
+            <th>Item</th>
+            <th>Amount</th>
+          </div>
+          <br />
+          <div class="cart-item-list">
+            <div
+              class="d-flex justify-content-between mx-3"
+              *ngFor="let item of cartItems"
+            >
+              <p>{{ item.totalQuantity + " x " + item.name }}</p>
+              <h6>{{ item.totalQuantity * item.price | currency : "INR" }}</h6>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="total-amount">
+          <h6>Total Amount: {{ getCartTotal() | currency : "INR" }}</h6>
+          <div class="cart-option d-flex justify-content-between">
+            <Button class="brand-btn my-2 py-1">Checkout</Button>
+            <Button (click)="clearCart()" class="brand-btn my-2 py-1"
+              >Clear Cart</Button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="grid-container">
+    <div
+      class="card grid-item"
+      style="width: 18rem"
+      *ngFor="let product of products"
+    >
+      <img
+        class="card-img-top"
+        src="{{ product.productImageUrl }}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">
+          {{ product.description }}
+        </p>
+        <p>
+          Qty: <span>{{ product.quantity }}</span>
+        </p>
+        <a
+          (click)="handleAddToCart(product.id)"
+          class="btn btn-primary"
+          [ngClass]="product.quantity == 0 ? 'disabled' : ''"
+          >Add To Cart</a
+        >
+      </div>
+    </div>
+  </div> -->
+</div>

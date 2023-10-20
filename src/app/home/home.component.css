@@ -1,0 +1,38 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.brand-btn {
+    border: black;
+    background-color: #0f3256;
+    color: white;
+}
+
+.brand-btn:hover:enabled {
+    cursor: pointer;
+}
+
+.brand-btn:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+.cart-summary {
+    position: fixed;
+    left: 1100px;
+    top: 120px;
+    max-height: 500px;
+    
+}
+
+.cart-item-list {
+    max-height: 300px;
+    overflow-y: auto;
+}

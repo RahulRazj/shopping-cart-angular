@@ -1,0 +1,52 @@
+.navbar {
+  background-color: #0f3256;
+}
+
+.container-fluid a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.container-fluid a:hover {
+  color: #f0870a;
+}
+
+.brandPrimary {
+  color: #f0870a;
+  line-height: 1.3rem;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-icon {
+    color: whitesmoke;
+}
+
+.navbar-icon:hover {
+    color:#f0870a
+}
+
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}

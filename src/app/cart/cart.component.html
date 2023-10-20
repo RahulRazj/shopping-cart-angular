@@ -1,0 +1,8 @@
+<div class="container-fluid p-4 m-4">
+    <p class="lead display-6">Your Cart</p>
+    <div class="cart-items">
+        <div *ngFor="let item of cartItems">
+            <p class="lead">{{item.name}}</p>
+        </div>
+    </div>
+</div>
